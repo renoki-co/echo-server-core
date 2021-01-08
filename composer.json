@@ -1,7 +1,7 @@
 {
     "name": "renoki-co/echo-server-broadcaster",
-    "description": ":package_description",
-    "keywords": ["laravel", "php"],
+    "description": "Echo Server Broadcaster is a Laravel Broadcaster used for Socket.IO-based Echo Server application.",
+    "keywords": ["laravel", "php", "echo", "server", "socket", "socket.io", "websockets", "broadcast", "broadcasting"],
     "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/echo-server-broadcaster",
     "authors": [
