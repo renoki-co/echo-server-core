@@ -17,7 +17,20 @@ class EchoServerServiceProvider extends ServiceProvider
      */
     public function boot(BroadcastManager $broadcastManager)
     {
-        //
+        $broadcastManager->extend('socketio', function ($app, $config) {
+            $pusher = new Pusher(
+                $config['key'],
+                $config['secret'],
+                $config['app_id'],
+                $config['options'] ?? []
+            );
+
+            if ($config['log'] ?? false) {
+                $pusher->setLogger($this->app->make(LoggerInterface::class));
+            }
+
+            return new Broadcasters\EchoServerBroadcaster($pusher);
+        });
     }
 
     /**
