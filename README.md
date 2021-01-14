@@ -31,6 +31,18 @@ You can install the package via composer:
 composer require renoki-co/echo-server-core
 ```
 
+Publish the config:
+
+```bash
+$ php artisan vendor:publish --provider="RenokiCo\EchoServer\EchoServerServiceProvider" --tag="config"
+```
+
+Publish the migrations:
+
+```bash
+$ php artisan vendor:publish --provider="RenokiCo\EchoServer\EchoServerServiceProvider" --tag="migrations"
+```
+
 ## 🙌 Usage
 
 ```php
