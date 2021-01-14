@@ -2,7 +2,6 @@
 
 namespace RenokiCo\EchoServer\AppsManagers;
 
-use Illuminate\Http\Request;
 use RenokiCo\EchoServer\Contracts\AppsManager;
 
 class ArrayAppsManager implements AppsManager
