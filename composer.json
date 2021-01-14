@@ -14,6 +14,9 @@
     "require": {
         "php": "^7.4|^8.0",
         "illuminate/broadcasting": "^7.0|^8.12",
+        "illuminate/database": "^7.0|^8.12",
+        "illuminate/routing": "^7.0|^8.12",
+        "illuminate/support": "^7.0|^8.12",
         "pusher/pusher-php-server": "^4.0"
     },
     "autoload": {
@@ -30,7 +33,9 @@
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
+        "laravel/legacy-factories": "^1.1",
         "mockery/mockery": "^1.4",
+        "orchestra/database": "^5.0|^6.0",
         "orchestra/testbench": "^5.0|^6.0"
     },
     "config": {
