@@ -43,8 +43,40 @@ $ php artisan vendor:publish --provider="RenokiCo\EchoServer\EchoServerServicePr
 
 ## 🙌 Usage
 
-```php
-$ //
+Out-of-the-box, you benefit a small range of features, like registering routes to retrieve the apps by using the `api` apps manager in Node.js.
+
+If you use the Node.js app in a separate environment or location, the `.env` configurations we get through the docs will not reflect on Node.js app too, so you should additionally configure the Node.js app.
+
+## Apps Manager
+
+Checking the configuration file, you might want to use Echo Server Core's `database` driver alongside with Echo Server's `api` apps manager. To do so, all the .env variables are set so that they are compatible with Echo Server's ones, so you can easily implement the variables in .env and make both Core & Node.js app to use the same configuration.
+
+```env
+# Set the database driver on Core
+ECHO_SERVER_APPS_MANAGER_DRIVER=database
+
+# Set the API driver on Node.js app
+ECHO_SERVER_APPS_MANAGER_DRIVER=api
+```
+
+A soft default is set as `array`, meaning that the default driver is the same as the Node.js app, but this time, the array is used from the config file:
+
+```env
+ECHO_SERVER_APPS_MANAGER_DRIVER=array
+
+ECHO_SERVER_APP_DEFAULT_ID=echo-app
+ECHO_SERVER_APP_DEFAULT_KEY=echo-app-key
+ECHO_SERVER_APP_DEFAULT_SECRET=echo-app-secret
+```
+
+## API Manager Security
+
+Since the calls to retrieve the apps are exposing secrets, a token is required to be established between Core & Echo Server app, so that we make sure only the Echo Server has access to them.
+
+You should change the default token for security reasons. It is backwards compatible with the Node.js app, meaning that this will let know the Node.js app about the token too.
+
+```env
+ECHO_SERVER_APPS_MANAGER_TOKEN=my-super-secret-token
 ```
 
 ## 🐛 Testing

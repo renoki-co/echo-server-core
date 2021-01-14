@@ -15,7 +15,7 @@ return [
 
     'app-manager' => [
 
-        'driver' => 'array',
+        'driver' => env('ECHO_SERVER_APPS_MANAGER_DRIVER', 'array'),
 
         /*
         |--------------------------------------------------------------------------
@@ -46,6 +46,8 @@ return [
         |
         | The apps will be retrieved from the database using
         | the out-of-the-box migrations.
+        | You are free to extend the base classes and replace with your own,
+        | so this configuration is really flexible.
         |
         */
 
