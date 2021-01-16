@@ -3,6 +3,7 @@
 namespace RenokiCo\EchoServer\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use RenokiCo\UsefulCasts\Casts\Arrayed;
 
 class EchoApp extends Model
 {
@@ -16,5 +17,12 @@ class EchoApp extends Model
      */
     protected $hidden = [
         'secret',
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'allowed_origins' => Arrayed::class,
     ];
 }
