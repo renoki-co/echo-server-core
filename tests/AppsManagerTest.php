@@ -16,6 +16,7 @@ class AppsManagerTest extends TestCase
                     'key' => 'echo-app-key',
                     'secret' => 'echo-app-secret',
                     'maxConnections' => -1,
+                    'allowedOrigins' => ['*.test.com'],
                 ],
             ]);
 
@@ -34,6 +35,7 @@ class AppsManagerTest extends TestCase
             'key' => 'echo-app-key',
             'secret' => 'echo-app-secret',
             'max_connections' => 100,
+            'allowed_origins' => ['*.test.com'],
         ]);
 
         $this->json('GET', route('echo-server.app.show', ['app' => $app->id, 'token' => 'echo-app-token']))
@@ -44,6 +46,7 @@ class AppsManagerTest extends TestCase
                     'key' => $app->key,
                     'secret' => $app->secret,
                     'maxConnections' => $app->max_connections,
+                    'allowedOrigins' => $app->allowed_origins,
                 ],
             ]);
 
