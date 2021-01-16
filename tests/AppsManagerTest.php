@@ -16,7 +16,7 @@ class AppsManagerTest extends TestCase
                     'key' => 'echo-app-key',
                     'secret' => 'echo-app-secret',
                     'maxConnections' => -1,
-                    'allowedOrigins' => ['*.test.com'],
+                    'allowedOrigins' => ['*'],
                 ],
             ]);
 
