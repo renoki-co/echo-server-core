@@ -26,7 +26,7 @@ class DatabaseAppsManager implements AppsManager
             $app->id,
             $app->key,
             $app->secret,
-            $app->maxConnections
+            $app->max_connections
         );
     }
 }

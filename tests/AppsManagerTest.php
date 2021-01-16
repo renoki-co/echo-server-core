@@ -33,7 +33,7 @@ class AppsManagerTest extends TestCase
         $app = factory(EchoApp::class)->create([
             'key' => 'echo-app-key',
             'secret' => 'echo-app-secret',
-            'maxConnections' => 100,
+            'max_connections' => 100,
         ]);
 
         $this->json('GET', route('echo-server.app.show', ['app' => $app->id, 'token' => 'echo-app-token']))
@@ -43,7 +43,7 @@ class AppsManagerTest extends TestCase
                     'id' => $app->id,
                     'key' => $app->key,
                     'secret' => $app->secret,
-                    'maxConnections' => $app->maxConnections,
+                    'maxConnections' => $app->max_connections,
                 ],
             ]);
 
