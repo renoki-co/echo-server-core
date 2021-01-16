@@ -36,23 +36,34 @@ class App implements Arrayable, Jsonable
     protected $maxConnections;
 
     /**
+     * The patterns for allowed origins.
+     *
+     * @var array
+     */
+    protected $allowedOrigins;
+
+    /**
      * Initialize the app.
      *
      * @param  string  $id
      * @param  string  $key
      * @param  string  $secret
+     * @param  int  $maxConnections
+     * @param  array  $allowedOrigins
      * @return void
      */
     public function __construct(
         string $id,
         string $key,
         string $secret,
-        int $maxConnections
+        int $maxConnections,
+        array $allowedOrigins
     ) {
         $this->id = $id;
         $this->key = $key;
         $this->secret = $secret;
         $this->maxConnections = $maxConnections;
+        $this->allowedOrigins = $allowedOrigins;
     }
 
     /**
@@ -67,6 +78,7 @@ class App implements Arrayable, Jsonable
             'key' => $this->key,
             'secret' => $this->secret,
             'maxConnections' => $this->maxConnections,
+            'allowedOrigins' => $this->allowedOrigins,
         ];
     }
 
