@@ -17,6 +17,7 @@ class CreateEchoAppsTable extends Migration
             $table->bigIncrements('id');
             $table->string('key');
             $table->string('secret');
+            $table->unsignedInteger('max_connections')->nullable();
             $table->timestamps();
         });
     }

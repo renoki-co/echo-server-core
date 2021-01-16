@@ -29,6 +29,13 @@ class App implements Arrayable, Jsonable
     protected $secret;
 
     /**
+     * The maximum amount of connexions.
+     *
+     * @var int
+     */
+    protected $maxConnections;
+
+    /**
      * Initialize the app.
      *
      * @param  string  $id
@@ -39,11 +46,13 @@ class App implements Arrayable, Jsonable
     public function __construct(
         string $id,
         string $key,
-        string $secret
+        string $secret,
+        int $maxConnections
     ) {
         $this->id = $id;
         $this->key = $key;
         $this->secret = $secret;
+        $this->maxConnections = $maxConnections;
     }
 
     /**
@@ -57,6 +66,7 @@ class App implements Arrayable, Jsonable
             'id' => $this->id,
             'key' => $this->key,
             'secret' => $this->secret,
+            'maxConnections' => $this->maxConnections,
         ];
     }
 
