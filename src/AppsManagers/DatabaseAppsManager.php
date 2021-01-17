@@ -27,7 +27,9 @@ class DatabaseAppsManager implements AppsManager
             $app->key,
             $app->secret,
             $app->max_connections,
-            $app->allowed_origins
+            $app->allowed_origins,
+            $app->auth_hosts,
+            $app->auth_endpoint
         );
     }
 }

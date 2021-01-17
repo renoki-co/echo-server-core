@@ -24,5 +24,6 @@ class EchoApp extends Model
      */
     protected $casts = [
         'allowed_origins' => Arrayed::class,
+        'auth_hosts' => Arrayed::class,
     ];
 }
