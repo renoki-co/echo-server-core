@@ -6,7 +6,6 @@ use Illuminate\Broadcasting\BroadcastManager;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Psr\Log\LoggerInterface;
-use Pusher\Pusher;
 
 class EchoServerServiceProvider extends ServiceProvider
 {
@@ -76,7 +75,7 @@ class EchoServerServiceProvider extends ServiceProvider
     protected function registerBroadcastDriver(BroadcastManager $broadcastManager): void
     {
         $broadcastManager->extend('socketio', function ($app, $config) {
-            $pusher = new Pusher(
+            $pusher = new EchoPusher(
                 $config['key'],
                 $config['secret'],
                 $config['app_id'],

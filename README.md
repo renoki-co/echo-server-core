@@ -80,6 +80,30 @@ You should change the default token for security reasons. It is backwards compat
 ECHO_SERVER_APPS_MANAGER_TOKEN=my-super-secret-token
 ```
 
+## Echo Broadcaster
+
+This package comes with a custom broadcaster that fixes the issues that normally the Pusher broadcaster has. It supports natively the same Pusher configuration from `broadcasting.php`, but the only thing is that the driver is called `socketio`, and you need to pass additional parameters:
+
+```php
+'socketio' => [
+    'driver' => 'socketio',
+    'key' => env('ECHO_SERVER_APP_DEFAULT_KEY'),
+    'secret' => env('ECHO_SERVER_APP_DEFAULT_SECRET'),
+    'app_id' => env('ECHO_SERVER_APP_DEFAULT_ID'),
+    'options' => [
+        'cluster' => 'mt1',
+        'encrypted' => true,
+        'host' => env('ECHO_SERVER_HOST', '127.0.0.1'),
+        'port' => 6001,
+        'scheme' => env('ECHO_SERVER_SOCKET_PROTOCOL', 'http'),
+        'curl_options' => [
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+        ],
+    ],
+],
+```
+
 ## 🐛 Testing
 
 ``` bash
