@@ -76,6 +76,8 @@ return [
 
     'api' => [
 
+        'enable' => true,
+
         'token' => env('ECHO_SERVER_APPS_MANAGER_TOKEN', 'echo-app-token'),
 
         'domain' => null,

@@ -97,6 +97,10 @@ class EchoServerServiceProvider extends ServiceProvider
      */
     protected function registerRoutes(): void
     {
+        if (! config('echo-server.api.enable', true)) {
+            return;
+        }
+
         Route::group([
             'as' => 'echo-server.',
             'domain' => config('echo-server.api.domain', null),
