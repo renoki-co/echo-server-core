@@ -30,12 +30,17 @@ class AppsController extends Controller
      *
      * @param  \RenokiCo\EchoServer\Contracts\AppsManager  $appsManager
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $appId
      * @return \Illuminate\Http\Response
      */
-    public function show(AppsManager $appsManager, Request $request, string $appId)
+    public function show(AppsManager $appsManager, Request $request)
     {
-        $app = $appsManager->find($appId);
+        if ($request->appId) {
+            $app = $appsManager->findById($request->appId);
+        } elseif ($request->appKey) {
+            $app = $appsManager->findByKey($request->appKey);
+        } else {
+            $app = null;
+        }
 
         if (! $app) {
             return response()->json(['app' => null], 404);
