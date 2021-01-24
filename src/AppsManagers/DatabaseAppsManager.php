@@ -48,7 +48,8 @@ class DatabaseAppsManager extends ArrayAppsManager
      * @param  \Illuminate\Database\Eloquent\Model  $app
      * @return \RenokiCo\EchoServer\AppsManagers\App
      */
-    protected function toApp($app) {
+    protected function toApp($app)
+    {
         return new App(
             $app->id,
             $app->key,
