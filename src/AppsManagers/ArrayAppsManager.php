@@ -50,7 +50,8 @@ class ArrayAppsManager implements AppsManager
      * @param  array  $app
      * @return \RenokiCo\EchoServer\AppsManagers\App
      */
-    protected function toApp(array $app) {
+    protected function toApp(array $app)
+    {
         return new App(
             $app['id'],
             $app['key'],
