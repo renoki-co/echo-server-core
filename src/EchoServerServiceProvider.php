@@ -107,7 +107,7 @@ class EchoServerServiceProvider extends ServiceProvider
             'middleware' => config('echo-server.api.middleware'),
             'prefix' => config('echo-server.api.prefix'),
         ], function () {
-            Route::apiResource('app', \RenokiCo\EchoServer\Http\Controllers\AppsController::class)->only('show');
+            Route::get('/app', [\RenokiCo\EchoServer\Http\Controllers\AppsController::class, 'show'])->name('app.show');
         });
     }
 
