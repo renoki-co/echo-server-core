@@ -43,22 +43,6 @@ class App implements Arrayable, Jsonable
     protected $allowedOrigins;
 
     /**
-     * The list of hosts the will serve as the root
-     * for authentication endpoint.
-     *
-     * @var array
-     */
-    protected $authHosts;
-
-    /**
-     * The enpoint that will be appended
-     * to the authentication host.
-     *
-     * @var string
-     */
-    protected $authEndpoint;
-
-    /**
      * Initialize the app.
      *
      * @param  string  $id
@@ -66,8 +50,6 @@ class App implements Arrayable, Jsonable
      * @param  string  $secret
      * @param  int  $maxConnections
      * @param  array  $allowedOrigins
-     * @param  array  $authHosts
-     * @param  string  $authEndpoint
      * @return void
      */
     public function __construct(
@@ -75,17 +57,13 @@ class App implements Arrayable, Jsonable
         string $key,
         string $secret,
         int $maxConnections,
-        array $allowedOrigins,
-        array $authHosts,
-        string $authEndpoint
+        array $allowedOrigins
     ) {
         $this->id = $id;
         $this->key = $key;
         $this->secret = $secret;
         $this->maxConnections = $maxConnections;
         $this->allowedOrigins = $allowedOrigins;
-        $this->authHosts = $authHosts;
-        $this->authEndpoint = $authEndpoint;
     }
 
     /**
@@ -101,8 +79,6 @@ class App implements Arrayable, Jsonable
             'secret' => $this->secret,
             'maxConnections' => $this->maxConnections,
             'allowedOrigins' => $this->allowedOrigins,
-            'authHosts' => $this->authHosts,
-            'authEndpoint' => $this->authEndpoint,
         ];
     }
 

@@ -37,8 +37,6 @@ return [
                     'secret' => env('ECHO_SERVER_APP_DEFAULT_SECRET', 'echo-app-secret'),
                     'maxConnections' => env('ECHO_SERVER_APP_DEFAULT_MAX_CONNS', -1),
                     'allowedOrigins' => env('ECHO_SERVER_APP_DEFAULT_ALLOWED_ORIGINS', ['*']),
-                    'authEndpoint' => env('ECHO_SERVER_APP_DEFAULT_AUTH_ENDPOINT', '/broadcasting/auth'),
-                    'authHost' => env('ECHO_SERVER_APP_DEFAULT_AUTH_HOSTS', 'http://127.0.0.1'),
                 ],
             ],
         ],

@@ -18,12 +18,4 @@ class EchoApp extends Model
     protected $hidden = [
         'secret',
     ];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $casts = [
-        'allowed_origins' => Arrayed::class,
-        'auth_hosts' => Arrayed::class,
-    ];
 }
