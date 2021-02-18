@@ -29,8 +29,6 @@ class AppsManagerTest extends TestCase
                     'secret' => 'echo-app-secret',
                     'maxConnections' => -1,
                     'allowedOrigins' => ['*'],
-                    'authHosts' => ['http://127.0.0.1'],
-                    'authEndpoint' => '/broadcasting/auth',
                 ],
             ]);
 
@@ -79,8 +77,6 @@ class AppsManagerTest extends TestCase
                     'secret' => $app->secret,
                     'maxConnections' => $app->max_connections,
                     'allowedOrigins' => $app->allowed_origins,
-                    'authHosts' => $app->auth_hosts,
-                    'authEndpoint' => $app->auth_endpoint,
                 ],
             ]);
 
