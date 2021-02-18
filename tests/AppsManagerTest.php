@@ -8,7 +8,7 @@ class AppsManagerTest extends TestCase
 {
     public function test_retrieve_with_array()
     {
-        $this->json('GET', route('echo-server.app.show', ['app' => 'echo-app', 'token' => 'echo-app-token']))
+        $this->json('GET', route('echo-server.app.show', ['appId' => 'echo-app', 'token' => 'echo-app-token']))
             ->assertOk()
             ->assertJson([
                 'app' => [
@@ -20,10 +20,30 @@ class AppsManagerTest extends TestCase
                 ],
             ]);
 
-        $this->json('GET', route('echo-server.app.show', ['app' => 'echo-app-wrong', 'token' => 'echo-app-token']))
+        $this->json('GET', route('echo-server.app.show', ['appKey' => 'echo-app-key', 'token' => 'echo-app-token']))
+            ->assertOk()
+            ->assertJson([
+                'app' => [
+                    'id' => 'echo-app',
+                    'key' => 'echo-app-key',
+                    'secret' => 'echo-app-secret',
+                    'maxConnections' => -1,
+                    'allowedOrigins' => ['*'],
+                    'authHosts' => ['http://127.0.0.1'],
+                    'authEndpoint' => '/broadcasting/auth',
+                ],
+            ]);
+
+        $this->json('GET', route('echo-server.app.show', ['appId' => 'echo-app-wrong', 'token' => 'echo-app-token']))
             ->assertNotFound();
 
-        $this->json('GET', route('echo-server.app.show', ['app' => 'echo-app', 'token' => 'echo-app-token-wrong']))
+        $this->json('GET', route('echo-server.app.show', ['appKey' => 'echo-app-wrong', 'token' => 'echo-app-token']))
+            ->assertNotFound();
+
+        $this->json('GET', route('echo-server.app.show', ['appId' => 'echo-app', 'token' => 'echo-app-token-wrong']))
+            ->assertUnauthorized();
+
+        $this->json('GET', route('echo-server.app.show', ['appKey' => 'echo-app-key', 'token' => 'echo-app-token-wrong']))
             ->assertUnauthorized();
     }
 
@@ -38,7 +58,7 @@ class AppsManagerTest extends TestCase
             'allowed_origins' => ['*.test.com'],
         ]);
 
-        $this->json('GET', route('echo-server.app.show', ['app' => $app->id, 'token' => 'echo-app-token']))
+        $this->json('GET', route('echo-server.app.show', ['appId' => $app->id, 'token' => 'echo-app-token']))
             ->assertOk()
             ->assertJson([
                 'app' => [
@@ -50,10 +70,30 @@ class AppsManagerTest extends TestCase
                 ],
             ]);
 
-        $this->json('GET', route('echo-server.app.show', ['app' => 'echo-app-wrong', 'token' => 'echo-app-token']))
+        $this->json('GET', route('echo-server.app.show', ['appKey' => $app->key, 'token' => 'echo-app-token']))
+            ->assertOk()
+            ->assertJson([
+                'app' => [
+                    'id' => $app->id,
+                    'key' => $app->key,
+                    'secret' => $app->secret,
+                    'maxConnections' => $app->max_connections,
+                    'allowedOrigins' => $app->allowed_origins,
+                    'authHosts' => $app->auth_hosts,
+                    'authEndpoint' => $app->auth_endpoint,
+                ],
+            ]);
+
+        $this->json('GET', route('echo-server.app.show', ['appId' => 'echo-app-wrong', 'token' => 'echo-app-token']))
             ->assertNotFound();
 
-        $this->json('GET', route('echo-server.app.show', ['app' => 'echo-app', 'token' => 'echo-app-token-wrong']))
+        $this->json('GET', route('echo-server.app.show', ['appKey' => 'echo-app-wrong', 'token' => 'echo-app-token']))
+            ->assertNotFound();
+
+        $this->json('GET', route('echo-server.app.show', ['appId' => 'echo-app', 'token' => 'echo-app-token-wrong']))
+            ->assertUnauthorized();
+
+        $this->json('GET', route('echo-server.app.show', ['appKey' => 'echo-app', 'token' => 'echo-app-token-wrong']))
             ->assertUnauthorized();
     }
 }

@@ -15,7 +15,7 @@ class CreateEchoAppsTable extends Migration
     {
         Schema::create('echo_apps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('key');
+            $table->string('key')->index();
             $table->string('secret');
             $table->unsignedInteger('max_connections')->nullable();
             $table->json('allowed_origins')->nullable();
