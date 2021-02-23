@@ -43,6 +43,13 @@ class App implements Arrayable, Jsonable
     protected $allowedOrigins;
 
     /**
+     * Enabling the stats collection.
+     *
+     * @var array
+     */
+    protected $enableStats;
+
+    /**
      * Initialize the app.
      *
      * @param  string  $id
@@ -50,6 +57,7 @@ class App implements Arrayable, Jsonable
      * @param  string  $secret
      * @param  int  $maxConnections
      * @param  array  $allowedOrigins
+     * @param  bool  $enableStats
      * @return void
      */
     public function __construct(
@@ -57,13 +65,15 @@ class App implements Arrayable, Jsonable
         string $key,
         string $secret,
         int $maxConnections,
-        array $allowedOrigins
+        array $allowedOrigins,
+        bool $enableStats
     ) {
         $this->id = $id;
         $this->key = $key;
         $this->secret = $secret;
         $this->maxConnections = $maxConnections;
         $this->allowedOrigins = $allowedOrigins;
+        $this->enableStats = $enableStats;
     }
 
     /**
@@ -79,6 +89,7 @@ class App implements Arrayable, Jsonable
             'secret' => $this->secret,
             'maxConnections' => $this->maxConnections,
             'allowedOrigins' => $this->allowedOrigins,
+            'enableStats' => $this->enableStats,
         ];
     }
 
