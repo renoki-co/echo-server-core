@@ -15,7 +15,7 @@ return [
 
     'app-manager' => [
 
-        'driver' => env('ECHO_SERVER_APPS_MANAGER_DRIVER', 'array'),
+        'driver' => env('ECHO_APPS_MANAGER_DRIVER', 'array'),
 
         /*
         |--------------------------------------------------------------------------
