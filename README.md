@@ -1,5 +1,5 @@
-Echo Server Core
-================
+Echo Server Core - deprecated; Head over to [soketi/echo-server-core](https://github.com/soketi/echo-server-core)
+=================================================================================================================
 
 ![CI](https://github.com/renoki-co/echo-server-core/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/echo-server-core/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/echo-server-core/branch/master)
